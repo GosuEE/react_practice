@@ -2,6 +2,7 @@ import Form from 'react-bootstrap/Form';
 import Btn from '../button/Btn';
 import InputText from './InputText';
 import React from 'react'
+import styles from './inputForm.module.css'
 
 function InputForm({ id, todoList, setTodoList }) {
     const todo = {
@@ -20,15 +21,14 @@ function InputForm({ id, todoList, setTodoList }) {
         todo.title = title;
         todo.contents = contents;
         setTodoList([...todoList, todo])
-        console.log(todo)
     }
 
     return (
-        <Form>
+        <form>
             <InputText name="제목" text={title} setText={setTitle} />
             <InputText name="내용" text={contents} setText={setContents} />
-            <Btn submit={submit} />
-        </Form>
+            <Btn type="button" submit={submit} />
+        </form>
     )
 }
 

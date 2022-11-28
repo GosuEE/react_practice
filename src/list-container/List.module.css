@@ -1,4 +1,16 @@
 .card {
+    margin-top:10px;
+    margin-right: 15px;
     width: 300px;
+    min-width:300px;
     height: 300px;
+}
+.text{
+    padding-bottom: 150px;
+}
+.delete_button{
+    margin-right: 15px;
+}
+.button_wrapper{
+    float:right;
 }
