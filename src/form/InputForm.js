@@ -5,8 +5,6 @@ import React from 'react'
 import styles from './inputForm.module.css'
 
 function InputForm({todoList, setTodoList }) {
-    const [id, setId] = React.useState(0);
-
     const todo = {
         id: 0,
         title: "",
@@ -15,6 +13,7 @@ function InputForm({todoList, setTodoList }) {
     }
     const [title, setTitle] = React.useState('');
     const [contents, setContents] = React.useState('');
+    const [id, setId] = React.useState(0);
 
     function submit() {
         if (title === "" || contents === "")
@@ -23,11 +22,13 @@ function InputForm({todoList, setTodoList }) {
         todo.id = id
         todo.title = title;
         todo.contents = contents;
+        setContents('')
+        setTitle('')
         setTodoList([...todoList, todo])
     }
 
     return (
-        <form>
+        <form className={styles.input_form}>
             <InputText name="제목" text={title} setText={setTitle} />
             <InputText name="내용" text={contents} setText={setContents} />
             <Btn type="button" submit={submit} />
