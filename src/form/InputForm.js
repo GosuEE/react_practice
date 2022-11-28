@@ -4,7 +4,9 @@ import InputText from './InputText';
 import React from 'react'
 import styles from './inputForm.module.css'
 
-function InputForm({ id, todoList, setTodoList }) {
+function InputForm({todoList, setTodoList }) {
+    const [id, setId] = React.useState(0);
+
     const todo = {
         id: 0,
         title: "",
@@ -17,6 +19,7 @@ function InputForm({ id, todoList, setTodoList }) {
     function submit() {
         if (title === "" || contents === "")
             return;
+        setId((current)=>current+1)
         todo.id = id
         todo.title = title;
         todo.contents = contents;
