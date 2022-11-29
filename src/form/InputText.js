@@ -10,7 +10,7 @@ function InputText({ name, text, setText }) {
     }
     return (
         <>
-            <Form.Group as={Row} className={styles.input_text}>
+            <Form.Group as={Row} className={styles.text}>
                 <Form.Label htmlFor="inputName" column sm="2">{name}</Form.Label>
                 <Col sm="10">
                     <Form.Control value={text} onChange={onChange} />
