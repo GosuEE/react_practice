@@ -43,7 +43,7 @@ function List_Container({ todoList, setTodoList }) {
                     }
                 </div>
             </div>
-            <div className="list_wrapper">
+            <div className={styles.list_container}>
                 <h2 className="list_title">달성 완료!</h2>
                 <div className={styles.todo_wrapper}>
                     {todoList.map((todo) => {

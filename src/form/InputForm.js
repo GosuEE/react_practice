@@ -12,14 +12,14 @@ function InputForm({ todoList, setTodoList }) {
     }
     const [title, setTitle] = React.useState('');
     const [contents, setContents] = React.useState('');
-    const [id, setId] = React.useState(0);
+    const id = React.useRef(0);
     const [disable, setDisable] = React.useState(true);
 
     function submit() {
         if (title === "" || contents === "")
             return;
-        setId((current) => current + 1)
-        todo.id = id
+        id.current++
+        todo.id = id.current
         todo.title = title;
         todo.contents = contents;
         setContents('')
