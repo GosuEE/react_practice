@@ -11,12 +11,11 @@ const StyledPage = styled.div`
 `
 
 function Page() {
-  const [todoList, setTodoList] = React.useState([]);
   return (
     <StyledPage>
       <Header />
-      <InputForm todoList={todoList} setTodoList={setTodoList} />
-      <List_Container todoList={todoList} setTodoList={setTodoList} />
+      <InputForm />
+      <List_Container />
     </StyledPage>
   );
 }

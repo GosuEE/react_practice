@@ -9,12 +9,10 @@ const StyledCard = styled(Card)`
   min-width:300px;
   height: 300px;
 `
-
-const StyledText = styled(Card.Text)`
-  padding-bottom: 150px;
-`
 const Button_wrapper = styled.div`
-  float:right;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
 `
 const Delete_button = styled(Button)`
   margin-right: 15px;
@@ -25,9 +23,9 @@ function List({ todo, onEditHandler, onDeleteHandler }) {
     <StyledCard>
       <Card.Header as="h5">{todo.title}</Card.Header>
       <Card.Body>
-        <StyledText>
+        <Card.Text>
           {todo.contents}
-        </StyledText>
+        </Card.Text>
         <Button_wrapper>
           <Delete_button variant="outline-danger" onClick={() => onDeleteHandler(todo.id)}>삭제하기</Delete_button>
           <Button variant="outline-primary" onClick={() => onEditHandler(todo.id)}>{todo.isDone ? "취소" : "완료"}</Button>

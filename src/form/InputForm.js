@@ -27,8 +27,7 @@ function InputForm({}) {
             contents: "",
             isDone: false
         }
-        id.current++
-        todo.id = id.current;
+        todo.id = ++id.current;
         todo.title = title;
         todo.contents = contents;
         dispatch(addTodo({ ...todo })); // 꼭 spread 연산자로 풀어서 넣어주어야 한다. 만약 todo를 그대로 넣으면 todoList에 todo라는 이름을 가진 프로퍼티가 넘어가기 때문에 추후에 접근할 때 문제가 생긴다.
