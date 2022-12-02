@@ -1,21 +1,39 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import styles from './List.module.css'
+import styled from "styled-components"
+
+const StyledCard = styled(Card)`
+  margin-top:10px;
+  margin-right: 15px;
+  width: 300px;
+  min-width:300px;
+  height: 300px;
+`
+
+const StyledText = styled(Card.Text)`
+  padding-bottom: 150px;
+`
+const Button_wrapper = styled.div`
+  float:right;
+`
+const Delete_button = styled(Button)`
+  margin-right: 15px;
+`
 
 function List({ todo, onEditHandler, onDeleteHandler }) {
   return (
-    <Card className={styles.card}>
+    <StyledCard>
       <Card.Header as="h5">{todo.title}</Card.Header>
       <Card.Body>
-        <Card.Text className={styles.text}>
+        <StyledText>
           {todo.contents}
-        </Card.Text>
-        <div className={styles.button_wrapper}>
-          <Button className={styles.delete_button} variant="outline-danger" onClick={() => onDeleteHandler(todo.id)}>삭제하기</Button>
+        </StyledText>
+        <Button_wrapper>
+          <Delete_button variant="outline-danger" onClick={() => onDeleteHandler(todo.id)}>삭제하기</Delete_button>
           <Button variant="outline-primary" onClick={() => onEditHandler(todo.id)}>{todo.isDone ? "취소" : "완료"}</Button>
-        </div>
+        </Button_wrapper>
       </Card.Body>
-    </Card>
+    </StyledCard>
   );
 }
 

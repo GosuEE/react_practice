@@ -1,35 +1,57 @@
 import List from './List'
 import React from 'react'
-import styles from './List_Container.module.css'
+import styled from "styled-components"
+import { useDispatch, useSelector } from "react-redux";
+import { deleteTodo, toggleStatusTodo } from '../redux/modules/todoList.js'
 
-function List_Container({ todoList, setTodoList }) {
+const List_container = styled.div`
+    margin-top:20px;
+`
+
+const List_wrapper = styled.div`
+    margin-top:20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+`
+
+const Todo_wrapper = styled.div`
+    display:flex;
+    flex-wrap: wrap;
+`
+
+function List_Container({ setTodoList }) {
+    const dispatch = useDispatch();
+    const todoList = useSelector((state) => state.todoList.todoList);
+
     const onEditHandler = (id) => {
-        const newTodoList = todoList.map((todo) => {
-            if (todo.id === id) {
-                todo.isDone = !todo.isDone
-                return todo
-            }
-            else
-                return todo
-        })
-        setTodoList(newTodoList)
+        dispatch(toggleStatusTodo(id))
+        // const newTodoList = todoList.filter((todo) => {
+        //     if (todo.id === id) {
+        //         todo.isDone = !todo.isDone
+        //         return todo
+        //     }
+        //     else
+        //         return todo
+        // })
+        // setTodoList(newTodoList)
     }
 
     const onDeleteHandler = (id) => {
-        const newTodoList = todoList.filter((todo) => {
-            if (todo.id === id)
-                return
-            else
-                return todo
-        })
-        setTodoList(newTodoList)
+        dispatch(deleteTodo(id))
+    //     const newTodoList = todoList.filter((todo) => {
+    //         if (todo.id === id)
+    //             return
+    //         else
+    //             return todo
+    //     })
+    //     setTodoList(newTodoList)
     }
 
     return (
-        <div className={styles.list_container}>
-            <div className={styles.list_wrapper}>
+        <List_container>
+            <List_wrapper>
                 <h2 className="list_title">달성하기 위해 노력중</h2>
-                <div className={styles.todo_wrapper}>
+                <Todo_wrapper>
                     {todoList.map((todo) => {
                         if (!todo.isDone)
                             return (
@@ -37,15 +59,16 @@ function List_Container({ todoList, setTodoList }) {
                                     todo={todo}
                                     onEditHandler={onEditHandler}
                                     onDeleteHandler={onDeleteHandler}
-                                    key={todo.id} />
+                                    key={todo.id}
+                                    />
                             )
                     })
                     }
-                </div>
-            </div>
-            <div className={styles.list_container}>
+                </Todo_wrapper>
+            </List_wrapper>
+            <List_wrapper>
                 <h2 className="list_title">달성 완료!</h2>
-                <div className={styles.todo_wrapper}>
+                <Todo_wrapper>
                     {todoList.map((todo) => {
                         if (todo.isDone)
                             return (
@@ -57,9 +80,9 @@ function List_Container({ todoList, setTodoList }) {
                             )
                     })
                     }
-                </div>
-            </div>
-        </div>
+                </Todo_wrapper>
+            </List_wrapper>
+        </List_container>
     )
 }
 
