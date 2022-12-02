@@ -19,32 +19,16 @@ const Todo_wrapper = styled.div`
     flex-wrap: wrap;
 `
 
-function List_Container({ setTodoList }) {
+function List_Container({}) {
     const dispatch = useDispatch();
     const todoList = useSelector((state) => state.todoList.todoList);
 
     const onEditHandler = (id) => {
         dispatch(toggleStatusTodo(id))
-        // const newTodoList = todoList.filter((todo) => {
-        //     if (todo.id === id) {
-        //         todo.isDone = !todo.isDone
-        //         return todo
-        //     }
-        //     else
-        //         return todo
-        // })
-        // setTodoList(newTodoList)
     }
 
     const onDeleteHandler = (id) => {
         dispatch(deleteTodo(id))
-    //     const newTodoList = todoList.filter((todo) => {
-    //         if (todo.id === id)
-    //             return
-    //         else
-    //             return todo
-    //     })
-    //     setTodoList(newTodoList)
     }
 
     return (

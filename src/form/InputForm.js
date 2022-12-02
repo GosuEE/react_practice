@@ -12,7 +12,7 @@ const StyledForm = styled.form`
     border-radius: 8px;
 `
 
-function InputForm({ todoList, setTodoList }) {
+function InputForm({}) {
     const [title, setTitle] = React.useState('');
     const [contents, setContents] = React.useState('');
     const id = React.useRef(0);
