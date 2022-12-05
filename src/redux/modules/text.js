@@ -48,7 +48,6 @@ export default function text(state = initialState, action) {
         default:
             return{
                 ...state
-                
             }
     }
 }
