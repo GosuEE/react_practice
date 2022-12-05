@@ -30,7 +30,6 @@ function List_Container({}) {
     const onDeleteHandler = (id) => {
         dispatch(deleteTodo(id))
     }
-
     return (
         <List_container>
             <List_wrapper>

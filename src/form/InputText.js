@@ -3,14 +3,16 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import React from 'react'
 import styled from "styled-components"
+import { useDispatch } from "react-redux";
 
 const StyledText = styled(Form.Control)`
     margin-bottom: 15px;
 `
 
-function InputText({ name, text, setText }) {
+function InputText({ name, text, changeText}) {
+    const dispatch = useDispatch();
     const onChange = (event) => {
-        setText((current) => event.target.value)
+        dispatch(changeText(event.target.value))
     }
     return (
         <>

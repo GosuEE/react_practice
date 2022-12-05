@@ -31,7 +31,7 @@ export const toggleStatusTodo = (payload) => {
         payload,
     }
 }
-export const getTodoById = (payload) => {
+export const getTodoByID = (payload) => {
     return {
         type: GET_TODO_BY_ID,
         payload,
