@@ -5,12 +5,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getTodoByID } from "../redux/modules/todoList"
 import Button from 'react-bootstrap/Button';
 
-const StDetail = styled.div`
-    padding: 20px 20px 20px 20px;
-    border: 2px solid #d2d2d2;
-    border-radius: 15px;
+const StTable = styled.div`
     width: 500px;
     height: 400px;
+    border: 2px solid #d2d2d2;
+    overflow: hidden;
+    border-radius: 15px;
 `
 
 const StRoot = styled.div`
@@ -22,7 +22,24 @@ const StRoot = styled.div`
 `
 
 const StBtn = styled(Button)`
-    float:right;
+    float: right;
+`
+
+const StId = styled.h2`
+    margin: 0px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-bottom: 2px solid #d2d2d2;
+`
+
+const StTitle = styled.h3`
+    margin: 0px;
+    padding: 15px;
+    border-bottom: 2px solid #d2d2d2;
+`
+const StContents = styled.p`
+    padding: 15px;
+    margin: 0px;
 `
 
 function Layout() {
@@ -36,12 +53,18 @@ function Layout() {
 
     return (
         <StRoot>
-            <StDetail>
-                <StBtn variant="outline-primary" onClick={() => navigate("/")}>뒤로가기</StBtn>
-                <h2>{todoId}</h2>
-                <h3>{todo.title}</h3>
-                <p>{todo.contents}</p>
-            </StDetail>
+            <StTable>
+                <StId>
+                    ID: {todo.id}
+                    <StBtn variant="outline-primary" onClick={() => navigate("/")}>뒤로가기</StBtn>
+                </StId>
+                <StTitle>
+                    제목 : {todo.title}
+                </StTitle>
+                <StContents>
+                    내용: {todo.contents}
+                </StContents>
+            </StTable>
         </StRoot>
     )
 }
