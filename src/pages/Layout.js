@@ -45,10 +45,14 @@ const StContents = styled.p`
 function Layout() {
     const { todoId } = useParams();
     const dispatch = useDispatch();
-    const todo = useSelector((state) => state.todoList.todo)
+    const todo = useSelector((state) => state.todoList.todo);
     const navigate = useNavigate();
+
+    if(!todo)
+        navigate("/*")
+
     useEffect(() => {
-        dispatch(getTodoByID(todoId))
+        dispatch(getTodoByID(todoId));
     }, [])
 
     return (

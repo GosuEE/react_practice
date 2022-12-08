@@ -4,8 +4,9 @@ import React, { useEffect } from 'react'
 import styled from "styled-components"
 import { useDispatch, useSelector } from "react-redux";
 import { addTodo } from '../redux/modules/todoList.js'
-import { initText, changeTitle, changeContents } from '../redux/modules/text'
+import { clearText, changeTitle, changeContents } from '../redux/modules/text'
 import nextId from "react-id-generator";
+import useTodo from "../hooks/useTodo"
 
 const StyledForm = styled.form`
     margin-top: 20px;
@@ -14,6 +15,7 @@ const StyledForm = styled.form`
     border-radius: 8px;
 `
 
+
 function InputForm({ }) {
     const text = useSelector((state) => state.text)
     const title = text.title;
@@ -21,21 +23,22 @@ function InputForm({ }) {
     const [disable, setDisable] = React.useState(true);
     const dispatch = useDispatch();
     const id = nextId;
+    const todo = useTodo();
 
     function onSubmitHandler() {
-        const todo = {
-            id: 0,
-            title: "",
-            contents: "",
-            isDone: false
-        }
+        // const todo = {
+        //     id: 0,
+        //     title: "",
+        //     contents: "",
+        //     isDone: false
+        // }
 
-        todo.id = id();
-        todo.title = title;
-        todo.contents = contents;
-
+        // todo.id = id();
+        // todo.title = title;
+        // todo.contents = contents;
+        todo.id=id();
         dispatch(addTodo(todo));
-        dispatch(initText());
+        dispatch(clearText());
     }
 
     useEffect(() => {

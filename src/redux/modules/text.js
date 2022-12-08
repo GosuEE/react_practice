@@ -1,4 +1,4 @@
-const INIT_TEXT = 'text/INIT_TEXT'
+const CLEAR_TEXT = 'text/CLEAR_TEXT'
 const CHANGE_TITLE = 'text/CHANGE_TITLE'
 const CHANGE_CONTENTS = 'text/CHANGE_CONTENTS'
 
@@ -7,9 +7,9 @@ const initialState = {
     contents: ""
 };
 
-export const initText = () => {
+export const clearText = () => {
     return {
-        type: INIT_TEXT,
+        type: CLEAR_TEXT,
     }
 }
 
@@ -29,7 +29,7 @@ export const changeContents = (payload) => {
 
 export default function text(state = initialState, action) {
     switch (action.type) {
-        case INIT_TEXT:
+        case CLEAR_TEXT:
             return {
                 ...state,
                 title: "",

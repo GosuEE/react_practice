@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { initText } from "../redux/modules/text"
+import { clearText } from "../redux/modules/text"
 
 const StyledCard = styled(Card)`
   margin-top:10px;
@@ -39,7 +39,7 @@ function List({ todo, onEditHandler, onDeleteHandler }) {
         </Card.Text>
         <Button_wrapper>
           <Link to={url}>
-            <Detail_button onClick={()=>dispatch(initText())} variant="outline-info">상세보기</Detail_button>
+            <Detail_button onClick={()=>dispatch(clearText())} variant="outline-info">상세보기</Detail_button>
           </Link>
           <Delete_button variant="outline-danger" onClick={() => onDeleteHandler(todo.id)}>삭제하기</Delete_button>
           <Button variant="outline-primary" onClick={() => onEditHandler(todo.id)}>{todo.isDone ? "취소" : "완료"}</Button>
