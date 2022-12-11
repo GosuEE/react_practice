@@ -1,12 +1,16 @@
-import todoList from '../modules/todoList'
-import {createStore} from "redux";
+// import todoList from '../modules/todoList'
+// import text from '../modules/text'
+
+import todoList from '../modules/todoListSlice'
+import text from '../modules/textSlice'
+
+import { configureStore } from '@reduxjs/toolkit'
 import { combineReducers } from 'redux';
-import text from '../modules/text'
 
 const rootReducer = combineReducers({
-    todoList, text
+    text, todoList
 })
 
-const store = createStore(rootReducer);
+const store = configureStore({ reducer: rootReducer });
 
 export default store;
